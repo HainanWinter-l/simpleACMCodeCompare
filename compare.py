@@ -13,8 +13,8 @@ STANDARD = "./build/standard.exe"  # C/C++
 # TEST = "python ./src/test.py"  # Python
 # STANDARD = "python ./src/standard.py"  # Python
 
-# 鼠标挪到 # 前面可以折叠 region (VScode/PyCharm)
-# region 这些代码都不要改了
+# ======================== 下面的代码不要改了 ========================
+# region 鼠标挪到 # 前面可以折叠 region (VScode/PyCharm)
 
 # C++ 编译
 if "exe" in TEST:
