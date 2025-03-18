@@ -1,22 +1,25 @@
 from cyaron import *
 from os import system
 
+# 造数据
+def make_test_data(write, writeln):
+    a, b = randint(-(10**9), 10**9), randint(-(10**9), 10**9)
+    writeln(a, b)
+
+
 # 选择程序 按 ctrl + / 来切换注释。可以混用，比如 Python 测试，C++ 标程
-TEST = "./build/test.exe"               # C/C++
-STANDARD = "./build/standard.exe"       # C/C++
+TEST = "./build/test.exe"  # C/C++
+STANDARD = "./build/standard.exe"  # C/C++
 # TEST = "python ./src/test.py"  # Python
 # STANDARD = "python ./src/standard.py"  # Python
-
-# 启用 C++ 自动编译（需要声明到 g++ 到环境变量，且支持 C++17）
-ENABLE_AUTO_COMPILE = True # 其实也可以改编译参数，在下面就有
 
 # 鼠标挪到 # 前面可以折叠 region (VScode/PyCharm)
 # region 这些代码都不要改了
 
 # C++ 编译
-if ENABLE_AUTO_COMPILE and "exe" in TEST:
+if "exe" in TEST:
     system("g++ -o ./build/test.exe -std=c++17 ./src/test.cpp")
-if ENABLE_AUTO_COMPILE and "exe" in STANDARD:
+if "exe" in STANDARD:
     system("g++ -o ./build/standard.exe -std=c++17 ./src/standard.cpp")
 
 
@@ -35,19 +38,14 @@ def exhabitInput(input_data: IO):
         file.writelines(input_data.input_file.readlines())
 
 
-# endregion
 
 # 死循环评测就好了
 while True:
     # 造数据
-    data_file = IO() # 不需要改
-    a, b = randint(-(10**9), 10**9), randint(-(10**9), 10**9)
-    data_file.input_writeln(a, b)
-
-
-
-
-
+    data_file = IO()  # 不需要改
+    write = data_file.input_write
+    writeln = data_file.input_writeln
+    make_test_data(write, writeln)
     # 对拍
     if isAccepct(data_file):  # 通过就证明没有找到
         continue
@@ -57,3 +55,5 @@ while True:
 
 # 恭喜你找到一个错误数据
 print("Congratulations! You found a error example!")
+
+# endregion

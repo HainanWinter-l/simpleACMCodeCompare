@@ -1,5 +1,4 @@
 #include <iostream>
-
 auto main() -> signed {
     int a, b;
     std::cin >> a >> b;
