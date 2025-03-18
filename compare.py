@@ -16,10 +16,13 @@ STANDARD = "./build/standard.exe"  # C/C++
 # ======================== 下面的代码不要改了 ========================
 # region 鼠标挪到 # 前面可以折叠 region (VScode/PyCharm)
 
+# 启用自动编译（需要 g++ 在环境变量且支持 C++17）
+ENABLE_AUTO_COMPILE = True # 如果没有请关闭，手动编译程序后粘贴 exe 文件
+
 # C++ 编译
-if "exe" in TEST:
+if ENABLE_AUTO_COMPILE and "exe" in TEST:
     system("g++ -o ./build/test.exe -std=c++17 ./src/test.cpp")
-if "exe" in STANDARD:
+if ENABLE_AUTO_COMPILE and "exe" in STANDARD:
     system("g++ -o ./build/standard.exe -std=c++17 ./src/standard.cpp")
 
 
